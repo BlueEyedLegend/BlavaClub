@@ -1,0 +1,154 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin: 0; }
+.app h1 { margin: 0 0 1rem 0; }
+
+.app header { margin-bottom: 1rem }
+/* Ensure full-app centered layout for the simplified roulette view */
+.app { height: 100vh; display:flex; align-items:center; justify-content:center; margin:0; padding:0 }
+
+/* Wheel container sizing */
+.wheel-container { width: fit-content; margin: 0 auto }
+.subtitle { color: #555; margin-top: .25rem }
+.toc { background: #f7f7f8; padding: 1rem; border-radius: 6px; margin-bottom: 1rem }
+.contenders .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem }
+.contender { display:flex; gap: .5rem; align-items:center }
+.contender input { flex: 1; padding: .5rem }
+.label { width: 36px; text-align:center; color:#666 }
+.games .gameList { display:flex; flex-direction:column; gap:.5rem }
+.gameCard { display:flex; justify-content:space-between; align-items:center; padding:.5rem; border:1px solid #eee; border-radius:6px }
+.desc { color:#666; font-size:.9rem }
+.result { margin-top:1rem }
+.info { color:#666 }
+.error { color: #a00 }
+.winner h3 { color: #064e3b }
+.details { background:#f3f4f6; padding: .5rem; border-radius:6px; overflow:auto }
+.foot { margin-top:2rem; color:#888 }
+
+.highlightRow { display:flex; gap:.5rem; margin-top:1rem; flex-wrap:wrap }
+.chip { padding:.5rem .75rem; border-radius:999px; background:#eee; color:#333; min-width:120px; text-align:center }
+.chip.active { background: linear-gradient(90deg,#ffd54d,#ff8a65); color:#111; transform: scale(1.06); box-shadow: 0 6px 18px rgba(0,0,0,0.12) }
+
+.chip.active { animation: bounce 360ms infinite }
+@keyframes bounce {
+	0% { transform: translateY(0) scale(1) }
+	50% { transform: translateY(-8px) scale(1.06) }
+	100% { transform: translateY(0) scale(1) }
+}
+
+.soundBtn { padding:.4rem .6rem; border-radius:6px; border:1px solid #eee; background:white; cursor:pointer }
+
+.gameCard:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.06) }
+
+.container { transition: transform .25s ease }
+
+/* Animator overlay */
+.animator { position: fixed; inset: 0; z-index: 60; pointer-events: none }
+.anim-overlay { position: absolute; inset: 0; display:flex; align-items:center; justify-content:center; pointer-events:none }
+.anim-label { background: rgba(255,255,255,0.9); padding: .6rem 1rem; border-radius: 8px; font-weight:600; box-shadow: 0 6px 18px rgba(0,0,0,0.08) }
+
+/* Roulette wheel */
+.wheelWrap { position: relative; width: 360px; height: 360px }
+.wheel { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; transform: rotate(0deg); border: 8px solid #fff; box-shadow: 0 14px 40px rgba(0,0,0,0.12) }
+.wheel-seg { position: absolute; left:50%; top:50%; width:50%; height:50%; transform-origin: 0% 0%; display:flex; align-items:center; justify-content:flex-start }
+.wheel-seg span { display:block; width:85px; transform-origin: left center; font-size:12px; color:#222 }
+.wheelPointer { position:absolute; top:-6px; left:50%; transform:translateX(-50%); font-size:26px; color:#e53935 }
+.wheel-seg span { /* reserved for segment backgrounds if used */ }
+.wheelWrap { width:420px; height:420px }
+.wheel { border-width:10px }
+
+/* radial labels (spokes) */
+.wheel-spoke { position:absolute; left:50%; top:50%; transform-origin:center center; white-space:nowrap }
+.wheel-word { font-size:16px; color:#fff; font-weight:700; text-shadow:0 2px 6px rgba(0,0,0,0.35) }
+
+/* Slot machine removed */
+
+/* Plinko */
+.plinko { width:600px; height:260px }
+.plinko-board { display:flex; position:relative; width:100%; height:100% }
+.plinko-col { flex:1; padding:8px; text-align:center; color:#333; border-left:1px dashed rgba(0,0,0,0.06); position:relative }
+.plinko-peg { position:absolute; width:10px; height:10px; border-radius:50%; background:#90a4ae; transform:translate(-50%,-50%); box-shadow:0 4px 10px rgba(0,0,0,0.08) }
+.plinko-ball { position:absolute; width:18px; height:18px; border-radius:50%; background:#ffb74d; transition: left .05s linear, top .05s linear; box-shadow:0 6px 16px rgba(0,0,0,0.12) }
+
+/* Hot potato circle */
+.circleWrap { position:relative; width:420px; height:420px; border-radius:50%; display:flex; align-items:center; justify-content:center }
+.circleItem { position:absolute; width:110px; text-align:center }
+.potato { position:absolute; font-size:28px }
+
+/* Musical chairs */
+.chairsWrap { display:flex; gap:12px; align-items:center }
+.chairItem { position:relative; padding:8px; border-radius:8px }
+.chair { display:block; font-size:22px; margin-top:6px }
+
+/* Cards */
+.cardsWrap { display:flex; gap:12px }
+.card-slot { width:100px; height:140px; perspective:800px }
+.cardFront, .cardBack { width:100%; height:100%; border-radius:8px; position:absolute; backface-visibility:hidden; display:flex; align-items:center; justify-content:center }
+.cardFront { background:white; color:#111; border:1px solid #ddd }
+.cardBack { background:#1976d2; color:white; transform: rotateY(180deg) }
+.card-slot.flip .cardFront { transform: rotateY(180deg) }
+.card-slot.flip .cardBack { transform: rotateY(0deg) }
+
+/* Dice */
+.diceWrap { display:flex; gap:12px }
+.diceItem { padding:8px; background:#fff; border-radius:8px }
+
+/* Bracket */
+.bracketWrap { display:flex; gap:8px; flex-wrap:wrap }
+.bracketItem { padding:8px; border-radius:6px; background:#fff }
+
+/* Overlay center for winner */
+.centerOverlay { position: fixed; inset: 0; display:flex; align-items:center; justify-content:center; z-index:80; pointer-events:none }
+.winnerOverlay { display:flex; align-items:center; justify-content:center; flex-direction:column }
+.winnerBig { font-size:64px; font-weight:800; color:#111; background:linear-gradient(90deg,#fff,#ffd54d); padding: .6rem 1.2rem; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.2) }
+.confetti { position:fixed; inset:0; width:100vw; height:100vh; z-index:79; pointer-events:none }
+
+/* visual niceties for animator elements */
+.wheel { background: linear-gradient(180deg,#ffe0b2,#ffe3c2) }
+.reel { background: linear-gradient(180deg,#444,#222) }
+.plinko-col.plinko-hit { background:#ffecb3 }
+.chairItem.eliminated { opacity:0.2; transform:scale(.92); transition: all .4s }
+.chairItem.survive { transform: translateY(-6px) }
+.reel.jitter { transform: translateY(-4px) }
+.card-slot.flip { transform: rotateY(180deg); transition: transform .3s }
+.diceItem.shake { transform: translateY(-6px) rotate(-6deg); transition: transform .12s }
+
+
+
+
+
+
