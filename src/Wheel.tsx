@@ -71,7 +71,7 @@ export const Wheel: React.FC<Props> = ({ participants }) => {
     }
     // prepare audio
     if (!audioRef.current) {
-      audioRef.current = new Audio('/let-it-ride-made-with-Voicemod.mp3');
+      audioRef.current = new Audio(`${import.meta.env.BASE_URL}let-it-ride-made-with-Voicemod.mp3`);
       audioRef.current.preload = 'auto';
       audioRef.current.loop = false;
       audioRef.current.volume = 1;
@@ -269,7 +269,7 @@ export const Wheel: React.FC<Props> = ({ participants }) => {
           }}
         >
           <img
-            src="/letitride.gif"
+            src={`${import.meta.env.BASE_URL}letitride.gif`}
             alt="celebrate"
             style={{
               width: 'min(80vw, 960px)',
